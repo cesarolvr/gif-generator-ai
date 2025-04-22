@@ -1,6 +1,11 @@
-FROM pytorch/pytorch:2.2.0-cuda12.1-cudnn8-runtime
+FROM python:3.10-slim
 
 WORKDIR /app
+
+# Set environment variables for PyTorch
+ENV TORCH_CUDA_ARCH_LIST=""
+ENV TORCH_NVCC_FLAGS=""
+ENV PYTORCH_CUDA_ALLOC_CONF=""
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
