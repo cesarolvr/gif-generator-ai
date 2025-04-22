@@ -1,0 +1,7 @@
+Pillow==10.2.0
+click==8.1.7
+torch==2.2.0
+transformers==4.37.2
+diffusers==0.24.0
+accelerate==0.27.2
+huggingface-hub==0.19.4 

@@ -1,0 +1,8 @@
+version: '3'
+services:
+  gif-generator:
+    build: .
+    volumes:
+      - ./:/app
+      - ./output:/app/output
+    working_dir: /app 
