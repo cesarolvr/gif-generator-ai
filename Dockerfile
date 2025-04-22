@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Remove the ENTRYPOINT to make the container more flexible
-CMD ["python", "gif_generator.py", "--help"] 
+CMD ["tail", "-f", "/dev/null"] 
