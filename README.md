@@ -11,7 +11,14 @@
  ╚═══════════════════════════════════════╝
 ```
 
-A command-line tool to create GIFs from AI-generated images.
+A command-line tool to create GIFs from AI-generated images using Apple's Metal framework for GPU acceleration.
+
+## System Requirements
+
+- Apple Silicon Mac (M1/M2/M3)
+- macOS 12.0 or later
+- Docker Desktop for Mac
+- At least 8GB RAM (16GB recommended)
 
 ## Installation
 
@@ -38,4 +45,11 @@ Options:
 - `--output` or `-o`: Output GIF filename (default: output/ai_image.gif)
 - `--steps` or `-s`: Number of inference steps per frame (default: 50)
 - `--guidance` or `-g`: Guidance scale (default: 7.5)
-- `--frames` or `-f`: Number of frames to generate (default: 3) 
+- `--frames` or `-f`: Number of frames to generate (default: 3)
+
+## Performance Notes
+
+- The app uses Apple's Metal framework for GPU acceleration
+- Image generation is significantly faster on Apple Silicon Macs
+- CPU fallback is available but much slower
+- Recommended to use at least 20 steps for good quality images 
