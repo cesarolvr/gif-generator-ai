@@ -1,16 +1,22 @@
-FROM python:3.10-slim
+FROM --platform=linux/arm64 python:3.10-slim
 
 WORKDIR /app
 
-# Set environment variables for PyTorch
-ENV TORCH_CUDA_ARCH_LIST=""
-ENV TORCH_NVCC_FLAGS=""
-ENV PYTORCH_CUDA_ALLOC_CONF=""
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libopenblas-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables
+ENV OPENBLAS_NUM_THREADS=1
+ENV MKL_NUM_THREADS=1
+ENV NUMEXPR_NUM_THREADS=1
+ENV OMP_NUM_THREADS=1
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Remove the ENTRYPOINT to make the container more flexible
 CMD ["tail", "-f", "/dev/null"] 

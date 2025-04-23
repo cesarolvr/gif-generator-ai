@@ -4,4 +4,6 @@ torch==2.2.0
 transformers==4.37.2
 diffusers==0.24.0
 accelerate==0.27.2
-huggingface-hub==0.19.4 
+huggingface-hub==0.19.4
+tqdm==4.66.2
+numpy==1.24.3 
