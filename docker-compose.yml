@@ -5,4 +5,8 @@ services:
     volumes:
       - ./:/app
       - ./output:/app/output
-    working_dir: /app 
+    working_dir: /app
+    # For Apple Silicon Macs, the following is needed for Metal acceleration
+    platform: linux/arm64
+    environment:
+      - PYTORCH_ENABLE_MPS_FALLBACK=1
