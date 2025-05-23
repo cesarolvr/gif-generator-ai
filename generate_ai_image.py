@@ -26,10 +26,15 @@ def generate(prompt, output, steps, guidance, frames, duration):
             requires_safety_checker=False
         )
 
-        # Move to GPU if available
-        if torch.cuda.is_available():
+        # Check for available hardware acceleration
+        if torch.backends.mps.is_available():
+            # Use Metal Performance Shaders (MPS) for Apple Silicon
+            pipe = pipe.to("mps")
+            click.echo("Using Apple Metal for faster generation")
+        elif torch.cuda.is_available():
+            # Use CUDA for NVIDIA GPUs
             pipe = pipe.to("cuda")
-            click.echo("Using GPU for faster generation")
+            click.echo("Using NVIDIA CUDA for faster generation")
         else:
             click.echo("Using CPU - generation will be slower")
             click.echo(f"Estimated time per frame: {steps * 1.5:.1f} seconds")
